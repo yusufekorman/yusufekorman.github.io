@@ -7,53 +7,72 @@
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(to right, #4facfe, #00f2fe);
-            color: #fff;
-            text-align: center;
-            padding: 50px;
+            background: linear-gradient(to bottom, #2c3e50, #34495e);
+            color: #ecf0f1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             margin: 0;
         }
 
         h1 {
             font-size: 2.5rem;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
+            color: #f39c12;
+        }
+
+        .countdown-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+            background: rgba(44, 62, 80, 0.8);
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
         }
 
         p {
             font-size: 1.5rem;
-            margin: 10px 0;
-            padding: 10px;
+            background: rgba(236, 240, 241, 0.2);
+            color: #ecf0f1;
+            padding: 10px 20px;
             border-radius: 8px;
-            background: rgba(255, 255, 255, 0.2);
-            display: inline-block;
+            width: 100%;
+            text-align: center;
         }
 
         #countdown-ms {
             font-size: 1.2rem;
-            color: #ffea00;
+            color: #e74c3c;
         }
 
         #countdown-human {
             font-size: 1.8rem;
             font-weight: bold;
+            color: #1abc9c;
         }
 
         footer {
-            margin-top: 50px;
+            margin-top: 30px;
             font-size: 0.9rem;
-            color: #e0e0e0;
+            color: #bdc3c7;
         }
     </style>
 </head>
 <body>
-    <h1>15 Tatile Kalan Süre</h1>
-    <p id="countdown-ms">Kalan Süre (Milisaniye): Hesaplanıyor...</p>
-    <p id="countdown-human">Kalan Süre (Okunabilir): Hesaplanıyor...</p>
-
-    <footer>© 2024 Tatil Sayaç - Bazı Hakları Saklıdır.</footer>
+    <h1>17 Ocak 2025 Tatiline Kalan Süre</h1>
+    <div class="countdown-container">
+        <p id="countdown-ms">Kalan Süre (Milisaniye): Hesaplanıyor...</p>
+        <p id="countdown-human">Kalan Süre (Okunabilir): Hesaplanıyor...</p>
+    </div>
+    <footer>© 2024 Tatil Sayaç - Tüm Hakları Saklıdır.</footer>
 
     <script>
         // Tatilin başlangıç tarihini ayarla
+        localStorage.setItem('ms', 100);
         const holidayStart = new Date('2025-01-17T00:00:00'); // 17 Ocak 2025 00:00:00
 
         function updateCountdown() {
@@ -75,7 +94,7 @@
                     `Kalan Süre: ${weeks} hafta, ${days} gün, ${hours} saat, ${minutes} dakika, ${seconds} saniye`;
 
                 // Sürekli güncellemek için 100ms sonra tekrar çalıştır
-                setTimeout(updateCountdown, 100);
+                setTimeout(updateCountdown, localStorage.ms);
             } else {
                 // Eğer süre dolduysa
                 document.getElementById('countdown-ms').textContent = "Tatil Başladı!";
