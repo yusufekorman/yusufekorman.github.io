@@ -72,7 +72,7 @@
 
     <script>
         // Tatilin başlangıç tarihini ayarla
-        localStorage.setItem('ms', 100);
+        localStorage.setItem('ms', 10);
         const holidayStart = new Date('2025-01-17T00:00:00'); // 17 Ocak 2025 00:00:00
 
         function updateCountdown() {
@@ -88,10 +88,9 @@
                 const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)); // Saat
                 const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60)); // Dakika
                 const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000); // Saniye
-                const weeks = Math.floor(days / 7); // Haftalar
 
                 document.getElementById('countdown-human').textContent =
-                    `Kalan Süre: ${weeks} hafta, ${days} gün, ${hours} saat, ${minutes} dakika, ${seconds} saniye`;
+                    `Kalan Süre: ${days} gün, ${hours} saat, ${minutes} dakika, ${seconds} saniye`;
 
                 // Sürekli güncellemek için 100ms sonra tekrar çalıştır
                 setTimeout(updateCountdown, localStorage.ms);
