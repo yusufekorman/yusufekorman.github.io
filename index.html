@@ -1,1 +1,35 @@
-deneme
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>17 Ocak 2025 Tatil Sayacı</title>
+</head>
+<body>
+    <h1>17 Ocak 2025 Tatiline Kalan Süre</h1>
+    <p id="countdown">Hesaplanıyor...</p>
+
+    <script>
+        // Tatilin başlangıç tarihini ayarla
+        const holidayStart = new Date('2025-01-17T00:00:00'); // 17 Ocak 2025 00:00:00
+
+        function updateCountdown() {
+            const now = new Date(); // Şimdiki zaman
+            const timeLeft = holidayStart - now; // Kalan süre (milisaniye cinsinden)
+
+            if (timeLeft > 0) {
+                // Milisaniyeleri göstermek için kalan süreyi güncelle
+                document.getElementById('countdown').textContent = `Kalan Süre: ${timeLeft.toLocaleString()} ms`;
+
+                // Sürekli güncellemek için 100ms sonra tekrar çalıştır
+                setTimeout(updateCountdown, 100);
+            } else {
+                document.getElementById('countdown').textContent = "Tatil Başladı!";
+            }
+        }
+
+        // Sayaç başlat
+        updateCountdown();
+    </script>
+</body>
+</html>
