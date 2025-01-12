@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>17 Ocak 2025 Tatil Sayacı</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom, #2c3e50, #34495e);
+            color: #ecf0f1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #f39c12;
+        }
+
+        .countdown-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+            background: rgba(44, 62, 80, 0.8);
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        p {
+            font-size: 1.5rem;
+            background: rgba(236, 240, 241, 0.2);
+            color: #ecf0f1;
+            padding: 10px 20px;
+            border-radius: 8px;
+            width: 100%;
+            text-align: center;
+        }
+
+        #countdown-ms {
+            font-size: 1.2rem;
+            color: #e74c3c;
+        }
+
+        #countdown-human {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #1abc9c;
+        }
+
+        footer {
+            margin-top: 30px;
+            font-size: 0.9rem;
+            color: #bdc3c7;
+        }
+
+        .final-countdown {
+            font-size: 8rem !important;
+            color: #e74c3c !important;
+            animation: pulse 1s infinite;
+        }
+
+        .firework {
+            position: fixed;
+            pointer-events: none;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            opacity: 1;
+            box-shadow: 0 0 20px 5px currentColor;
+            bottom: -20px;
+        }
+
+        .firework-rising {
+            animation: rise 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+        }
+
+        .firework-exploding {
+            animation: explode 3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes rise {
+            0% { 
+                transform: translateY(0) scale(1);
+                opacity: 0.8;
+            }
+            10% {
+                transform: translateY(calc(-10vh - var(--extra-height, 0px))) scale(1);
+                opacity: 1;
+            }
+            20% {
+                transform: translateY(calc(-20vh - var(--extra-height, 0px))) scale(1);
+                opacity: 0.8;
+            }
+            30% {
+                transform: translateY(calc(-30vh - var(--extra-height, 0px))) scale(1);
+                opacity: 1;
+            }
+            40% { 
+                transform: translateY(calc(-40vh - var(--extra-height, 0px))) scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(calc(-50vh - var(--extra-height, 0px))) scale(1);
+                opacity: 0.8;
+            }
+            60% {
+                transform: translateY(calc(-60vh - var(--extra-height, 0px))) scale(1);
+                opacity: 1;
+            }
+            70% { 
+                transform: translateY(calc(-70vh - var(--extra-height, 0px))) scale(1);
+                opacity: 0.8;
+            }
+            80% {
+                transform: translateY(calc(-80vh - var(--extra-height, 0px))) scale(1);
+                opacity: 0.8;
+            }
+            90% {
+                transform: translateY(calc(-90vh - var(--extra-height, 0px))) scale(1);
+                opacity: 1;
+            }
+            100% { 
+                transform: translateY(calc(-100vh - var(--extra-height, 0px))) scale(1);
+                opacity: 0;
+            }
+        }
+
+        @keyframes explode {
+            0% { 
+                transform: scale(1) translate(0, 0);
+                opacity: 0;
+            }
+            5% {
+                transform: scale(1.2) translate(0, 0);
+                opacity: 1;
+            }
+            25% {
+                transform: scale(1) translate(var(--dx), var(--dy));
+                opacity: 1;
+            }
+            50% {
+                transform: scale(0.8) 
+                    translate(
+                        calc(var(--dx) * 1.2), 
+                        calc(var(--dy) * 1.2)
+                    );
+                opacity: 0.8;
+            }
+            100% { 
+                transform: scale(0.2) 
+                    translate(
+                        calc(var(--dx) * 2 + var(--scatter-x)), 
+                        calc(var(--dy) * 2 + var(--fall-distance))
+                    );
+                opacity: 0;
+            }
+        }
+
+        .homework-reminder {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(44, 62, 80, 0.95);
+            padding: 30px 50px;
+            border-radius: 15px;
+            display: none;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+            animation: popIn 0.5s ease-out;
+            border: 2px solid #f39c12;
+        }
+
+        .homework-reminder h2 {
+            color: #f39c12;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .homework-reminder p {
+            color: #ecf0f1;
+            font-size: 1.3rem;
+            margin: 10px 0;
+            background: none;
+        }
+
+        @keyframes popIn {
+            0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+            
+            70% { transform: translate(-50%, -50%) scale(1.1); }
+            100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <h1>17 Ocak 2025 Tatiline Kalan Süre</h1>
+    <div class="countdown-container">
+        <p id="countdown-ms">Kalan Süre (Milisaniye): Hesaplanıyor...</p>
+        <p id="countdown-human">Kalan Süre (Okunabilir): Hesaplanıyor...</p>
+    </div>
+    <footer>© 2024-2025 Tatil Sayaç - Bazı Hakları Saklıdır.</footer>
+
+    <div class="homework-reminder" id="homework-reminder">
+        <h2>Tatil Başladı</h2>
+        <p>Tatil başladı ama bitmesine az kaldı! 📚</p>
+        <p>Ödevlerin var sen hala buna bakıyorsun!</p>
+    </div>
+
+    <script>
+        // Tatilin başlangıç tarihini ayarla
+        localStorage.setItem('ms', 10);
+        //const holidayStart = new Date('2025-01-17T00:00:00'); // 17 Ocak 2025 00:00:00
+        // test
+        const holidayStart = new Date(Date.now() + 3000); // 12 saniye sonra
+
+        function updateCountdown() {
+            const now = new Date();
+            const timeLeft = holidayStart - now;
+
+            if (timeLeft > 0) {
+                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+                
+                // Son 10 saniye kontrolü
+                if (timeLeft <= 10000) {
+                    document.getElementById('countdown-human').className = 'final-countdown';
+                    document.getElementById('countdown-human').textContent = Math.ceil(timeLeft / 1000).toString();
+                    document.getElementById('countdown-ms').style.display = 'none';
+                } else {
+                    // Normal sayaç gösterimi
+                    const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                    
+                    document.getElementById('countdown-ms').textContent = `Kalan Süre: ${timeLeft.toLocaleString()} ms`;
+                    document.getElementById('countdown-human').textContent =
+                        `Kalan Süre: ${days} gün, ${hours} saat, ${minutes} dakika, ${seconds} saniye`;
+                }
+
+                setTimeout(updateCountdown, localStorage.ms);
+            } else {
+                showFireworks();
+                document.getElementById('countdown-ms').style.display = 'none';
+                //document.getElementById('countdown-human').textContent = "TATİL BİTTİ!";
+                document.getElementById('countdown-human').style.display = 'none';
+                document.getElementById('homework-reminder').style.display = 'block';
+            }
+        }
+
+        function showFireworks() {
+            const colors = ['#f39c12', '#e74c3c', '#3498db', '#2ecc71', '#9b59b6', '#ff0', '#f0f'];
+            let startTime = Date.now();
+            let baseSize = 6;
+            let finaleShown = false;
+            
+            function launchFirework(size = baseSize, isFinale = false) {
+                const firework = document.createElement('div');
+                firework.className = 'firework firework-rising';
+                const startX = isFinale ? window.innerWidth / 2 : Math.random() * window.innerWidth;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                const extraHeight = Math.random() * 200 - 100; // -100px ile +100px arası
+                
+                firework.style.left = startX + 'px';
+                firework.style.color = color;
+                firework.style.width = size + 'px';
+                firework.style.height = size + 'px';
+                firework.style.setProperty('--extra-height', `${extraHeight}px`);
+                document.body.appendChild(firework);
+
+                firework.addEventListener('animationend', () => {
+                    firework.remove();
+                    createExplosion(startX, window.innerHeight * 0.2 + extraHeight, color, size, isFinale);
+                });
+            }
+
+            function createExplosion(x, y, color, size, isFinale) {
+                const particleCount = isFinale ? 50 : 20;
+                const particleSize = isFinale ? size * 2 : size;
+                const maxDistance = isFinale ? 400 : (100 + Math.random() * 100);
+                
+                for (let i = 0; i < particleCount; i++) {
+                    const particle = document.createElement('div');
+                    particle.className = 'firework firework-exploding';
+                    particle.style.left = x + 'px';
+                    particle.style.bottom = '80vh';
+                    particle.style.transform = `translateY(-${y}px)`;
+                    particle.style.color = color;
+                    particle.style.width = particleSize + 'px';
+                    particle.style.height = particleSize + 'px';
+                    particle.style.boxShadow = isFinale ? `0 0 ${particleSize * 4}px ${particleSize}px currentColor` : '';
+                    
+                    const angle = (Math.random() * Math.PI * 2);
+                    const distance = maxDistance * (0.5 + Math.random() * 0.5);
+                    const dx = Math.cos(angle) * distance;
+                    const dy = Math.sin(angle) * distance;
+                    
+                    // Yerçekimi ve saçılma efekti için ek değerler
+                    const fallDistance = 300 + Math.random() * 200; // 300-500px arası düşüş
+                    const scatterX = (Math.random() - 0.5) * 200; // -100px ile 100px arası saçılma
+                    
+                    particle.style.setProperty('--dx', `${dx}px`);
+                    particle.style.setProperty('--dy', `${dy}px`);
+                    particle.style.setProperty('--fall-distance', `${fallDistance}px`);
+                    particle.style.setProperty('--scatter-x', `${scatterX}px`);
+                    
+                    document.body.appendChild(particle);
+                    setTimeout(() => particle.remove(), isFinale ? 3000 : 2500);
+                }
+            }
+
+            function launch() {
+                const elapsedTime = Date.now() - startTime;
+                const currentSize = baseSize + (elapsedTime / 1000);
+
+                if (elapsedTime >= 15000 && !finaleShown) {
+                    finaleShown = true;
+                    launchFirework(currentSize * 4, true);
+                    setTimeout(launch, 3000);
+                } else if (!finaleShown) {
+                    launchFirework(currentSize);
+                    setTimeout(launch, Math.random() * 800 + 200);
+                }
+            }
+
+            launch();
+        }
+
+        // Sayaç başlat
+        updateCountdown();
+    </script>
+</body>
+</html>
