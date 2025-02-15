@@ -1,0 +1,50 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Writeups</title>
+</head>
+<body>
+    <h1>Writeups</h1>
+    <ul id="writeups">
+    </ul>
+
+    <script>
+        const url = 'https://raw.githubusercontent.com/yusufekorman/yusufekorman.github.io/refs/heads/main/writeups.json';
+
+        /* 
+        {
+            "writeups": [
+                {
+                    "title": "Writeup 1",
+                    "description": "Description 1",
+                    "url": "https://example.com/writeup1"
+                },
+                {
+                    "title": "Writeup 2",
+                    "description": "Description 2",
+                    "url": "https://example.com/writeup2"
+                }
+            ]
+        }
+        */
+
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                const writeups = data.writeups;
+                const writeupsList = document.getElementById('writeups');
+
+                writeups.forEach(writeup => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `
+                        <h3>${writeup.title}</h3>
+                        <p>${writeup.description}</p>
+                        <a href="${writeup.url}" target="_blank">Read More</a>
+                    `;
+                    writeupsList.appendChild(li);
+                });
+            });
+    </script>
+</body>
+</html>

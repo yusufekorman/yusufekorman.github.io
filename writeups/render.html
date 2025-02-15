@@ -1,0 +1,91 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Writeup Renderer</title>
+
+    <style>
+        /* Writeup Renderer Styles Dark Mode */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 40px;
+            background-color: #333;
+            color: #fff;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #3498db;
+            border-bottom: 2px solid #3498db;
+        }
+
+        pre {
+            background-color: #222;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+
+        code {
+            background-color: #222;
+            color: #fff;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        strong {
+            color: #3498db;
+        }
+
+        em {
+            color: #3498db;
+        }
+
+        #loading {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="loading">Writeup Renderer Loading...</h1>
+
+    <script>
+        const url = new URL(window.location.href);
+        const writeupSlug = url.searchParams.get('writeup');
+
+        function markdownToHtml(markdown) {
+            const html = markdown
+                .replace(/```(.*?)```/g, '<pre>$1</pre>')
+                .replace(/`(.*?)`/g, '<code>$1</code>')
+                .replace(/# (.*?)(\n|$)/g, '<h2>$1</h2>')
+                .replace(/\n/g, '<br>')
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                .replace(/\*(.*?)\*/g, '<em>$1</em>');
+
+            return html;
+        }
+
+        const writeupSrc = `https://raw.githubusercontent.com/yusufekorman/yusufekorman.github.io/refs/heads/main/writeups/src/${writeupSlug}.md`;
+        fetch(writeupSrc)
+            .then(response => response.text())
+            .then(data => {
+                const writeup = document.createElement('div');
+
+                const html = markdownToHtml(data);
+
+                writeup.innerHTML = html;
+                document.body.appendChild(writeup);
+                document.getElementById('loading').remove();
+            })
+            .catch(error => {
+                document.getElementById('loading').innerText = 'Writeup Not Found';
+            });
+    </script>
+</body>
+</html>
