@@ -3,6 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Writeup Renderer</title>
+    <script type="module" src="https://md-block.verou.me/md-block.js"></script>
 
     <style>
         /* Writeup Renderer Styles Dark Mode */
@@ -50,28 +51,25 @@
         #loading {
             text-align: center;
         }
+
+        a {
+            color: #3498db;
+        }
     </style>
 </head>
 <body>
-    <h1 id="loading">Writeup Renderer Loading...</h1>
+    <h1 id="loading">Markdown Renderer Loading...</h1>
 
     <script>
         const url = new URL(window.location.href);
         const writeupSlug = url.searchParams.get('writeup');
 
         function markdownToHtml(markdown) {
-            const html = markdown
-                .replace(/```(.*?)```/g, '<pre>$1</pre>')
-                .replace(/`(.*?)`/g, '<code>$1</code>')
-                .replace(/# (.*?)(\n|$)/g, '<h2>$1</h2>')
-                .replace(/\n/g, '<br>')
-                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-                .replace(/\*(.*?)\*/g, '<em>$1</em>');
-
-            return html;
+            return `<md-block>${markdown}</md-block>`;
         }
 
         const writeupSrc = `https://raw.githubusercontent.com/yusufekorman/yusufekorman.github.io/refs/heads/main/writeups/src/${writeupSlug}.md`;
+        // const writeupSrc = `http://127.0.0.1:5500/writeups/src/${writeupSlug}.md`;
         fetch(writeupSrc)
             .then(response => response.text())
             .then(data => {
