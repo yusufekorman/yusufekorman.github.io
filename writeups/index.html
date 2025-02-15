@@ -70,7 +70,12 @@
         }
         */
 
-        fetch(url)
+        fetch(url, {
+            headers: {
+                'Accept': 'application/json',
+                'Cache-Control': 'no-cache',
+            },
+        })
             .then(response => response.json())
             .then(data => {
                 const writeups = data.writeups;
