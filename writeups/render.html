@@ -68,8 +68,7 @@
             return `<md-block>${markdown}</md-block>`;
         }
 
-        const writeupSrc = `https://raw.githubusercontent.com/yusufekorman/yusufekorman.github.io/refs/heads/main/writeups/src/${writeupSlug}.md`;
-        // const writeupSrc = `http://127.0.0.1:5500/writeups/src/${writeupSlug}.md`;
+        const writeupSrc = `${window.location.hostname}/writeups/src/${writeupSlug}.md`;
         fetch(writeupSrc)
             .then(response => response.text())
             .then(data => {
