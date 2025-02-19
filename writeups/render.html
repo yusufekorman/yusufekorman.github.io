@@ -68,7 +68,7 @@
             return `<md-block>${markdown}</md-block>`;
         }
 
-        const writeupSrc = `${window.location.hostname}/writeups/src/${writeupSlug}.md`;
+        const writeupSrc = `https://${window.location.hostname}/writeups/src/${writeupSlug}.md`;
         fetch(writeupSrc)
             .then(response => response.text())
             .then(data => {
