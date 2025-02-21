@@ -4,6 +4,11 @@
             "title": "Feb 16-22 - Code Analysis",
             "description": "A basic writeup on code analysis.",
             "url": "./render.html?writeup=15-02-2025"
+        },
+        {
+            "title": "Feb 23-29 - Finding XSS",
+            "description": "A basic writeup on xss exploitation.",
+            "url": "./render.html?writeup=21-02-2025"
         }
     ]
 }
