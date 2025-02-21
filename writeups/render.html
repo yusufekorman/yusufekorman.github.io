@@ -65,6 +65,8 @@
         const writeupSlug = url.searchParams.get('writeup');
 
         function markdownToHtml(markdown) {
+            // escape HTML
+            markdown = markdown.replace(/</g, '&lt;').replace(/>/g, '&gt;');
             return `<md-block>${markdown}</md-block>`;
         }
 
