@@ -6,7 +6,7 @@
             "url": "./render.html?writeup=15-02-2025"
         },
         {
-            "title": "Feb 23-29 - Finding XSS",
+            "title": "Feb 16-22 - Finding XSS",
             "description": "A basic writeup on xss exploitation.",
             "url": "./render.html?writeup=21-02-2025"
         }
