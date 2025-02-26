@@ -14,6 +14,11 @@
             "title": "Feb 23-28 - Finding XSS 2",
             "description": "A writeup on xss exploitation in PHP",
             "url": "./render.html?writeup=26-02-2025"
+        },
+        {
+            "title": "Feb 23-28 - Code Analysis",
+            "description": "A writeup on code analysis",
+            "url": "./render.html?writeup=27-02-2025"
         }
     ]
 }
