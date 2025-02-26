@@ -1,14 +1,19 @@
 {
     "writeups": [
         {
-            "title": "Feb 16-22 - Code Analysis",
-            "description": "A basic writeup on code analysis.",
+            "title": "Feb 16-22 - SQL Injection",
+            "description": "A basic writeup on sql injection.",
             "url": "./render.html?writeup=15-02-2025"
         },
         {
             "title": "Feb 16-22 - Finding XSS",
-            "description": "A basic writeup on xss exploitation.",
+            "description": "A writeup on xss exploitation.",
             "url": "./render.html?writeup=21-02-2025"
+        },
+        {
+            "title": "Feb 23-28 - Finding XSS 2",
+            "description": "A writeup on xss exploitation in PHP",
+            "url": "./render.html?writeup=26-02-2025"
         }
     ]
 }
